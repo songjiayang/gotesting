@@ -1,4 +1,4 @@
-package gotesting
+package basic
 
 import "testing"
 

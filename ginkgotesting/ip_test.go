@@ -1,21 +1,14 @@
-package gotesting
+package ginkgotesting_test
 
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
+	. "gotesting/tabletesting"
 )
 
-var _ = Describe("Gotesting", func() {
-	// for package level prepare
-	BeforeEach(func() {
-		// prepare data before every case
-	})
-
-	AfterEach(func() {
-		// clear data after every case
-	})
-
-	Describe("gotesting.IsIPV4()", func() {
+var _ = Describe("Ip", func() {
+	Describe("IsIPV4()", func() {
 		// fore content level prepare
 		BeforeEach(func() {
 			// prepare data before every case

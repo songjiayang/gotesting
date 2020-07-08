@@ -1,4 +1,4 @@
-package gotesting
+package ginkgotesting_test
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestGotesting(t *testing.T) {
+func TestGinkgotesting(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Gotesting Suite")
+	RunSpecs(t, "Ginkgotesting Suite")
 }

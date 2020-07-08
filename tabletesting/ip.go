@@ -1,4 +1,4 @@
-package gotesting
+package tabletesting
 
 import "regexp"
 
