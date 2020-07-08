@@ -3,6 +3,8 @@ module gotesting
 go 1.14
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.4.1
+	github.com/go-sql-driver/mysql v1.5.0 // indirect
 	github.com/golang/mock v1.4.3
 	github.com/jarcoal/httpmock v1.0.5
 	github.com/onsi/ginkgo v1.14.0

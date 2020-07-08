@@ -1,6 +1,7 @@
 package post
 
 import (
+	"database/sql"
 	"encoding/json"
 	"net/http"
 
@@ -31,10 +32,37 @@ type PostService interface {
 	Destroy(int64) error
 }
 
-type PostDao struct{}
+type PostDao struct {
+	db *sql.DB
+}
 
-func (*PostDao) List() ([]*PostModel, error) {
-	return nil, nil
+func NewPostDao(db *sql.DB) *PostDao {
+	return &PostDao{
+		db: db,
+	}
+}
+
+func (dao *PostDao) List() ([]*PostModel, error) {
+	rows, err := dao.db.Query("SELECT id, title, body FROM posts")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var posts []*PostModel
+	for rows.Next() {
+		p := &PostModel{}
+		if err := rows.Scan(&p.ID, &p.Title, &p.Body); err != nil {
+			return nil, err
+		}
+		posts = append(posts, p)
+	}
+
+	if rows.Err() != nil {
+		return nil, rows.Err()
+	}
+
+	return posts, nil
 }
 
 func (*PostDao) Find(int64) (*PostModel, error) {
